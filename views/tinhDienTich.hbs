@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body class="body">
+    <div class="container">
+        <div class="row" id="rowIndex">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-3">
+                <ul class="nav" id="navIndex">
+                    <li class="nav-item" id="navItem">
+                        <a class="nav-link" href="/trangchu">Trang Chu</a>
+                    </li>
+
+                    <li class="nav-item dropdown " id="navItem">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">San Pham</a>
+                        <ul class="dropdown-menu " id="menu">
+                            <li><a class="dropdown-item" href="/DSSanPham">Ds SanPham</a></li>
+                            <li><a class="dropdown-item" href="/ThemSanPham">Them moi</a></li>
+                            <li><a class="dropdown-item" href="/formtinhdientich">Dien Tich Tam Giac</a></li>
+
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="col-sm-3">
+                <ul class="nav" id="navIndexright">
+                    <div class="col-sm-6">
+                        <li class="nav-item dropdown " id="navItem">
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">Cung Cấp</a>
+                            <ul class="dropdown-menu " id="menu">
+                                <li><a class="dropdown-item" href="/DSSanPham">Ds Nhà Cung Cấp</a></li>
+                                <li><a class="dropdown-item" href="/ThemSanPham">Them moi NCC</a></li>
+                                <li><a class="dropdown-item" href="/formtinhdientich">Dien Tich Tam Giac</a></li>
+
+                            </ul>
+                        </li>
+                    </div>
+                    <div class="col-sm-6">
+                        <li class="nav-item" id="navItem">
+                            <a class="nav-link" href="#">Liên Hệ</a>
+                        </li>
+                    </div>
+                </ul>
+
+            </div>
+            <div class="col-sm-3">
+                <ul class="nav" id="navdangxuat">
+                    <li class="nav-item" id="dangxuat">
+                        <a class="nav-link" href="/login">Dang Xuat</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div>
+            <img onclick="window.location.href = '/trangchu'" src=" ../images/kynalab.jpg" width="10%" id="mainImg" />
+        </div>
+        <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10">
+                <form action="/dientich" method="POST">
+                    <div class="mb-3 mt-3">
+                        <label>Canh day:</label>
+                        <input type="number" class="form-control" id="email" placeholder="Nhap Canh Day" name="canhday">
+                    </div>
+                    <div class="mb-3">
+                        <label>Chieu Cao:</label>
+                        <input type="number" class="form-control" id="pwd" placeholder="Nhap Chieu Cao" name="chieucao">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Tinh Dien Tich</button>
+                </form>
+            </div>
+            <div class="col-sm-1"></div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>

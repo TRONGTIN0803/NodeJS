@@ -1,0 +1,104 @@
+#titlene {
+    font-size: 50px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.col-sm-4 .row {
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+}
+
+#rowIndex {
+    margin-top: 30px;
+
+}
+
+#table {
+    margin-top: 20px;
+}
+
+#navIndex {
+    text-align: end;
+    padding: 20px;
+}
+
+#navItem {
+    font-size: larger;
+}
+
+#dangxuat {
+    font-size: larger;
+    background-color: aliceblue;
+}
+
+#dangxuat :hover {
+    background-color: #FFCCFF;
+    border-radius: 10px;
+}
+
+#btndetail {
+    border: none;
+    padding: 8px;
+    background-color: aqua;
+}
+
+#btnupdate {
+    border: none;
+    padding: 8px;
+    background-color: chartreuse;
+}
+
+#btnupdate :hover {
+
+    border: #99CCFF 2px soi;
+}
+
+#btndelete {
+    border: none;
+    padding: 8px;
+    background-color: red;
+}
+
+#imgcenter {
+    margin-bottom: 30px;
+}
+
+#menu {
+    text-align: start;
+}
+
+#mainImg {
+    border-radius: 100px;
+    position: absolute;
+    top: 60px;
+    left: 700px;
+}
+
+#navdangxuat {
+    text-align: end;
+    padding: 20px;
+    margin-left: 140px;
+}
+
+#navIndexright {
+    text-align: end;
+    padding: 20px;
+    margin-left: 45px;
+}
+
+#background {
+    /* background-image: linear-gradient(-120deg, #6633FF, #6633FF); */
+    background-image: url(./bg.jpg);
+    background-size: cover;
+}
+
+.col-sm-8 {
+    background-color: aliceblue;
+}
+
+#bg {
+    background-image: linear-gradient(-120deg, #FFCCFF, #99CCFF);
+}
