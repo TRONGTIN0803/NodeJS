@@ -21,6 +21,7 @@
     "cookie-parser": "^1.4.6",
     "css": "^3.0.0",
     "debug": "^4.3.4",
+    "fs": "^0.0.1-security",
     "hbs": "^4.2.0",
     "http-errors": "^2.0.0",
     "jsonwebtoken": "^9.0.0",

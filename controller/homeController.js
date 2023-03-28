@@ -19,32 +19,13 @@ let getDienTich = (req, res) => {
     return res.render('dientich', { value: dientich })
 }
 
-let getDSSanPham = (req, res) => {
-    //return res.render('DSSanPham')
-    return res.render('main/DSSanPham', { layout: 'main/layoutmain.hbs' })
-}
 
-let suaSanPham = (req, res) => {
-    //return res.render('suaSanPham')
-    return res.render('main/suaSanPham', { layout: 'main/layoutmain.hbs' })
-}
-
-let themSanPham = (req, res) => {
-    //return res.render('themSanPham')
-    return res.render('main/themSanPham', { layout: 'main/layoutmain.hbs' })
-}
-
-let DetailSanPham = (req, res) => {
-    //return res.render('DetailSanPham')
-    return res.render('main/DetailSanPham', { layout: 'main/layoutmain.hbs' })
-
-}
 
 let getUpload = (req, res) => {
-    const username = '';
-    if (username == '') {
-        res.redirect('/login')
-    }
+    // const username = '';
+    // if (username == '') {
+    //     res.redirect('/login')
+    // }
     return res.render('upload');
 }
 
@@ -59,10 +40,6 @@ module.exports = {
     getformDienTichTamGiac,
     getDienTich,
     getLogin,
-    getDSSanPham,
-    suaSanPham,
-    themSanPham,
-    DetailSanPham,
     getUpload,
     ridirect,
 }
