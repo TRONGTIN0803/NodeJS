@@ -15,56 +15,18 @@
     <div class="container">
 
         <div class="row">
-            <div class="col-sm-1"></div>
-            <div class="col-sm-10">
-                <table class="table table-hover" id="table">
-                    <thead>
-                        <tr>
-                            <th>Ten San Pham</th>
-                            <th>Hinh Anh</th>
-                            <th>Gia San Pham</th>
-
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>John</td>
-                            <td>Doe</td>
-                            <td>john@example.com</td>
-                            <td> </td>
-                            <td>
-                                <button id="btnupdate" onclick="window.location.href = '/suaSanPham'">Update</button>
-                                <button id="btndelete">Delete</button>
-                                <button id="btndetail" onclick="window.location.href = '/DetailSanPham'">Detail</button>
-                            </td>
-
-                        </tr>
-                        <tr>
-                            <td>Mary</td>
-                            <td>Moe</td>
-                            <td>mary@example.com</td>
-                            <td></td>
-                            <td>
-                                <button id="btnupdate" onclick="window.location.href = '/suaSanPham'">Update</button>
-                                <button id="btndelete">Delete</button>
-                                <button id="btndetail">Detail</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>July</td>
-                            <td>Dooley</td>
-                            <td>july@example.com</td>
-                            <td></td>
-                            <td>
-                                <button id="btnupdate" onclick="window.location.href = '/suaSanPham'">Update</button>
-                                <button id="btndelete">Delete</button>
-                                <button id="btndetail">Detail</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+            {{#each sanphams}}
+            <div class="col-sm-3">
+                <div class="card" style="width: 18rem;">
+                    <img src="{{this.HinhAnh}}" class="card-img-top" alt="..." />
+                    <div class="card-body">
+                        <h5 class="card-title">{{this.TenSP}}</h5>
+                        <p class="card-text">{{this.Gia}}</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
             </div>
-            <div class="col-sm-1"></div>
+            {{/each}}
         </div>
 
     </div>

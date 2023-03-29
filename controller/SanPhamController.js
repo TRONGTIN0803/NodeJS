@@ -1,6 +1,17 @@
+const product = require('../model/Product')
+
 let getDSSanPham = (req, res) => {
     //return res.render('DSSanPham')
-    return res.render('main/SanPham/DSSanPham', { layout: 'main/layoutmain.hbs' })
+    //return res.render('main/SanPham/DSSanPham', { layout: 'main/layoutmain.hbs' })
+    product.find({}, function (err, sanphams) {
+        if (!err) {
+            res.render('main/SanPham/DSSanPham', { layout: 'main/layoutmain.hbs', sanphams })
+        }
+        else {
+            res.status(400).json({ error: 'Not Found' })
+        }
+    })
+    // sanPham.find({}).then(sanphams => res.json(sanphams)).catch(next)
 }
 
 let suaSanPham = (req, res) => {
