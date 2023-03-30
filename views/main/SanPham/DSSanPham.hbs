@@ -18,11 +18,18 @@
             {{#each sanphams}}
             <div class="col-sm-3">
                 <div class="card" style="width: 18rem;">
-                    <img src="{{this.HinhAnh}}" class="card-img-top" alt="..." />
+                    <a href="/trangchu"><img src="{{this.HinhAnh}}" class="card-img-top" alt="Card image" /></a>
                     <div class="card-body">
-                        <h5 class="card-title">{{this.TenSP}}</h5>
-                        <p class="card-text">{{this.Gia}}</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <a href="#" style="text-decoration: none;">
+                            <h5 style="color: red;" class="card-title">{{this.TenSP}}</h5>
+                        </a>
+                        <p class="card-text">đ{{this.Gia}}</p>
+                        <div class="row">
+                            <a href="#" style="margin-left: 10px;" class="btn btn-info col-sm-5 p-2">Update</a>
+                            <a class="col-sm-1" />
+                            <a href="#" class="btn btn-danger col-sm-5 p-2">Delete</a>
+                        </div>
+
                     </div>
                 </div>
             </div>

@@ -31,7 +31,7 @@
 
 #dangxuat {
     font-size: larger;
-    background-color: aliceblue;
+    text-decoration: none;
 }
 
 #dangxuat :hover {
@@ -73,8 +73,8 @@
 #mainImg {
     border-radius: 100px;
     position: absolute;
-    top: 60px;
-    left: 700px;
+    top: 20px;
+    left: 70px;
 }
 
 #navdangxuat {
@@ -101,4 +101,28 @@
 
 #bg {
     background-image: linear-gradient(-120deg, #FFCCFF, #99CCFF);
+}
+
+
+
+/*css sanpham */
+.card {
+    margin-top: 40px;
+}
+
+.card:hover {
+    border: #99CCFF 4px solid;
+}
+
+.card-title {
+    text-align: center;
+}
+
+/*nainlayout*/
+#btnsearch {
+    text-align: center;
+    text-decoration: none;
+    background-color: bisque;
+    padding: 7px;
+    border: none;
 }

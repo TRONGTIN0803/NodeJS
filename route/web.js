@@ -27,11 +27,11 @@ const initwebroute = (app) => {
 
 
     router.get('/trangchu', homeController.getHomePage)
-    // router.get('/formtinhdientich', homeController.getformDienTichTamGiac)
+    router.get('/formtinhdientich', homeController.getformDienTichTamGiac)
 
     router.get('/login', homeController.getLogin)
 
-    // router.post('/dientich', homeController.getDienTich)
+    router.post('/dientich', homeController.getDienTich)
 
     router.get('/upload', homeController.getUpload);
     router.post('/upload', upload.single('avatar'), (req, res) => {

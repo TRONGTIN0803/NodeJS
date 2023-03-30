@@ -4,7 +4,7 @@ let getHomePage = (req, res) => {
 }
 
 let getformDienTichTamGiac = (req, res) => {
-    return res.render('tinhDienTich')
+    return res.render('tinhDienTich', { layout: 'main/layoutmain.hbs' })
 }
 
 let getLogin = (req, res) => {
@@ -16,7 +16,7 @@ let getDienTich = (req, res) => {
     const chieucao = parseFloat(req.body.chieucao)
     const dientich = 0.5 * canhday * chieucao;
     //console.log(dientich)
-    return res.render('dientich', { value: dientich })
+    return res.render('dientich', { layout: 'main/layoutmain.hbs', value: dientich })
 }
 
 
