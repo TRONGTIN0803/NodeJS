@@ -1,8 +1,14 @@
 const product = require('../model/Product')
+var fs = require('fs');
+
+function base64_encode(file) {
+    // read binary data
+    var bitmap = fs.readFileSync(file);
+    // convert binary data to base64 encoded string
+    return new Buffer(bitmap).toString('base64');
+}
 
 let getDSSanPham = (req, res) => {
-    //return res.render('DSSanPham')
-    //return res.render('main/SanPham/DSSanPham', { layout: 'main/layoutmain.hbs' })
     product.find({}, function (err, sanphams) {
         if (!err) {
             res.render('main/SanPham/DSSanPham', { layout: 'main/layoutmain.hbs', sanphams })
@@ -11,35 +17,48 @@ let getDSSanPham = (req, res) => {
             res.status(400).json({ error: 'Not Found' })
         }
     })
-    // sanPham.find({}).then(sanphams => res.json(sanphams)).catch(next)
 }
 
 let suaSanPham = (req, res) => {
-    //return res.render('suaSanPham')
-    return res.render('main/SanPham/suaSanPham', { layout: 'main/layoutmain.hbs' })
+
+    // return res.render('main/SanPham/suaSanPham', { layout: 'main/layoutmain.hbs' })
+    product.findById(req.params.id, (err, sanphams) => {
+        if (!err) {
+            res.render('main/SanPham/SuasanPham', { layout: 'main/layoutmain.hbs', sanphams })
+        }
+        else {
+            res.status(400).json({ error: 'Not Found' })
+        }
+    })
+}
+
+let POSTsuaSanPham = (req, res) => {
+    res.json(req.body)
 }
 
 let themSanPham = (req, res) => {
-    //return res.render('themSanPham')
-    console.log(req.body)
     return res.render('main/SanPham/themSanPham', { layout: 'main/layoutmain.hbs' })
 
 }
 
 let themSanPhamPOST = (req, res) => {
-    //+ " Hinh Anh:" + req.boddy.image
-    console.log(req.body)
-
-    return res.send("<p>TenSP: " + req.body.nameproduct + " GiaSP: " + req.body.price + "</p>")
+    const strbase64 = base64_encode(req.file.path)
+    const sanpham = new product({ TenSP: req.body.nameproduct, HinhAnh: strbase64, Gia: req.body.price })
+    sanpham.save()
+    res.render('main/SanPham/DSSanPham', { layout: 'main/layoutmain.hbs', sanphams })
 
 }
 
+let DetailSanPham = (req, res, next) => {
 
-
-let DetailSanPham = (req, res) => {
-    //return res.render('DetailSanPham')
-    return res.render('main/SanPham/DetailSanPham', { layout: 'main/layoutmain.hbs' })
-
+    product.findById(req.params.id, (err, sanphams) => {
+        if (!err) {
+            res.render('main/SanPham/DetailSanPham', { layout: 'main/layoutmain.hbs', sanphams })
+        }
+        else {
+            res.status(400).json({ error: 'Not Found' })
+        }
+    })
 }
 
 module.exports = {
@@ -48,6 +67,5 @@ module.exports = {
     themSanPham,
     DetailSanPham,
     themSanPhamPOST,
-
-
+    POSTsuaSanPham,
 }

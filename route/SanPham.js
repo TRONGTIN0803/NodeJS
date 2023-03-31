@@ -1,15 +1,30 @@
 
 var express = require('express');
 var router = express.Router();
+var multer = require('multer');
+
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, './upload')
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.originalname);
+    }
+})
+var upload = multer({ storage: storage });
 
 const SanPhamController = require("../controller/SanPhamController")
 
 
 
-router.get('/suaSanPham', SanPhamController.suaSanPham)
+router.get('/suaSanPham/:id', SanPhamController.suaSanPham)
+router.post('/suaSanPham', SanPhamController.POSTsuaSanPham)
 router.get('/themSanPham', SanPhamController.themSanPham)
-router.post('/themSanPham', SanPhamController.themSanPhamPOST)
-router.get('/DetailSanPham', SanPhamController.DetailSanPham)
+router.post('/themSanPham', upload.single('image'), SanPhamController.themSanPhamPOST)
+
+
+//[GET] /sanpham/detail
+router.get('/:id', SanPhamController.DetailSanPham)
 router.get('/', SanPhamController.getDSSanPham)
 
 

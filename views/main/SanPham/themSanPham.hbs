@@ -18,14 +18,15 @@
             <div class="col-sm-1"></div>
             <div class="col-sm-10">
                 <h2>Add Product</h2>
-                <form action="/sanpham/themSanPham" method="post">
+                <form action="/sanpham/themSanPham" method="post" enctype="multipart/form-data">
                     <div class="mb-3 mt-3">
                         <label for="email">Ten San Pham:</label>
                         <input type="text" class="form-control" id="email" placeholder="Ten San Pham"
                             name="nameproduct">
                     </div>
-                    <label for="pwd">Hinh Anh:</label>
+
                     <div class="mb-3">
+                        <label for="pwd">Hinh Anh:</label>
                         <input type="file" class="form-control" id="pwd" name="image">
 
                     </div>

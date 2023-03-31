@@ -36,9 +36,6 @@ const initwebroute = (app) => {
     router.get('/upload', homeController.getUpload);
     router.post('/upload', upload.single('avatar'), (req, res) => {
 
-        // function to encode file data to base64 encoded string
-        //console.log(req)
-        //console.log(req.file)
         console.log(base64_encode(req.file.path))
         return res.send('<h1>Thanh Cong!</h1>')
     })

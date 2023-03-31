@@ -18,9 +18,6 @@ let getDienTich = (req, res) => {
     //console.log(dientich)
     return res.render('dientich', { layout: 'main/layoutmain.hbs', value: dientich })
 }
-
-
-
 let getUpload = (req, res) => {
     // const username = '';
     // if (username == '') {

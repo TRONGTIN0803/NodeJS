@@ -13,38 +13,21 @@
 
 <body class="body">
     <div class="container">
-
         <div class="row">
-            <div class="col-sm-1"></div>
-            <div class="col-sm-10">
-                <h2>Detail Product</h2>
-                <form action="/action_page.php">
-                    <div class="mb-3 mt-3">
-                        <label for="email">First Name:</label>
-                        <input type="text" class="form-control" disabled="true" value="John" id="email"
-                            placeholder="Enter First Name" name="email">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8">
+                <div class="row">
+                    <div class="col-sm-8 ">
+                        <img src="{{sanphams.HinhAnh}}" width="100%" />
                     </div>
-                    <div class="mb-3">
-                        <label for="pwd">Last Name:</label>
-                        <input type="text" value="Doe" disabled="true" class="form-control" id="pwd"
-                            placeholder="Enter Last Name" name="pswd">
+                    <div class="col-sm-4 ">
+                        <h2>{{sanphams.TenSP}}</h2>
+                        <h5>{{sanphams.Gia}}</h5>
                     </div>
-                    <label>Your Email:</label><br>
-                    <div class="input-group mb-3">
-                        <input type="text" value="John" disabled="true" class="form-control" placeholder="Your Email"
-                            name="email">
-                        <span class="input-group-text">@example.com</span>
-                    </div>
-
-                    <button type="button" onclick="window.location.href = '/suaSanPham'"
-                        class="btn btn-primary">Update</button>
-                    <button type="button" onclick="window.location.href = '/sanpham'" class="btn btn-primary">Back to
-                        list</button>
-                </form>
+                </div>
             </div>
-            <div class="col-sm-1"></div>
+            <div class="col-sm-2"></div>
         </div>
-
     </div>
 </body>
 
