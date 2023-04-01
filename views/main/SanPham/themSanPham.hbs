@@ -26,11 +26,18 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="pwd">Hinh Anh:</label>
+                        <label for="pwd">Hình Ảnh:</label>
                         <input type="file" class="form-control" id="pwd" name="image">
 
                     </div>
-
+                    <div class="mb-3">
+                        <label>Nhà Cung Cấp:</label>
+                        <select class="form-select form-select-lg" name="TenNCC">
+                            {{#each nhacungcaps}}
+                            <option value="{{this.TenNCC}}">{{this.TenNCC}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
                     <div class=" mb-3">
                         <label>Gia San Pham:</label>
                         <input type="text" class="form-control" placeholder="Gia San Pham" name="price">

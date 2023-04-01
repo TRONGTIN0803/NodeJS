@@ -17,6 +17,7 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage });
 
 const SanPhamRouter = require("./SanPham")
+const NCCRouter = require("./NhaCungCap")
 function base64_encode(file) {
     // read binary data
     var bitmap = fs.readFileSync(file);
@@ -30,6 +31,7 @@ const initwebroute = (app) => {
     router.get('/formtinhdientich', homeController.getformDienTichTamGiac)
 
     router.get('/login', homeController.getLogin)
+    router.post('/login', homeController.LoginPOST)
 
     router.post('/dientich', homeController.getDienTich)
 
@@ -42,6 +44,7 @@ const initwebroute = (app) => {
     router.all('/secret', homeController.ridirect)
 
     router.use('/sanpham', SanPhamRouter)
+    router.use('/nhacungcap', NCCRouter)
     router.use('/', homeController.getHomePage)
     return app.use('/', router)
 }

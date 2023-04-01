@@ -1,4 +1,5 @@
 const product = require('../model/Product')
+const ncc = require('../model/NhaCungCap')
 const mongoose = require('mongoose');
 var fs = require('fs');
 
@@ -11,8 +12,9 @@ function base64_encode(file) {
 }
 
 let getDSSanPham = (req, res) => {
-    product.find({}, function (err, sanphams) {
+    product.find({}, (err, sanphams) => {
         if (!err) {
+
             res.render('main/SanPham/DSSanPham', { layout: 'main/layoutmain.hbs', sanphams })
         }
         else {
@@ -38,7 +40,15 @@ let suaSanPham = (req, res) => {
     // return res.render('main/SanPham/suaSanPham', { layout: 'main/layoutmain.hbs' })
     product.findById(req.params.id, (err, sanphams) => {
         if (!err) {
-            res.render('main/SanPham/SuaSanPham', { layout: 'main/layoutmain.hbs', sanphams })
+            ncc.find({}, (err, nhacungcaps) => {
+                if (!err) {
+                    res.render('main/SanPham/SuaSanPham', { layout: 'main/layoutmain.hbs', sanphams, nhacungcaps })
+                }
+                else {
+                    res.status(400).json({ error: 'Not Found' })
+                }
+            })
+
         }
         else {
             res.status(400).json({ error: 'Not Found' })
@@ -47,8 +57,9 @@ let suaSanPham = (req, res) => {
 }
 
 let suaSanPhamPUT = (req, res) => {
-    const strpath = req.file.path
-    if (strpath) {
+    //console.log(req.file)
+    if (req.file != undefined) {
+        const strpath = req.file.path
         const strbase64 = base64_encode(strpath)
         product.findByIdAndUpdate(req.params.id, { HinhAnh: strbase64 }, (err, next) => {
             if (!err) {
@@ -72,13 +83,21 @@ let suaSanPhamPUT = (req, res) => {
 }
 
 let themSanPham = (req, res) => {
-    return res.render('main/SanPham/themSanPham', { layout: 'main/layoutmain.hbs' })
+    ncc.find({}, (err, nhacungcaps) => {
+        if (!err) {
+            res.render('main/SanPham/themSanPham', { layout: 'main/layoutmain.hbs', nhacungcaps })
+        }
+        else {
+            res.status(400).json({ error: 'Not Found' })
+        }
+    })
+
 
 }
 
 let themSanPhamPOST = (req, res) => {
     const strbase64 = base64_encode(req.file.path)
-    const sanpham = new product({ TenSP: req.body.nameproduct, HinhAnh: strbase64, Gia: req.body.price })
+    const sanpham = new product({ TenSP: req.body.nameproduct, HinhAnh: strbase64, Gia: req.body.price, TenNCC: req.body.TenNCC })
     sanpham.save()
     product.find({}, function (err, sanphams) {
         if (!err) {

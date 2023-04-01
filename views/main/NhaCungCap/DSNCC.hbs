@@ -20,52 +20,35 @@
                 <table class="table table-hover" id="table">
                     <thead>
                         <tr>
-                            <th>Firstname</th>
-                            <th>Lastname</th>
-                            <th>Email</th>
+                            <th>Tên nhà cung cấp</th>
+                            <th>Số lượng sản phẩm</th>
+
 
                         </tr>
                     </thead>
                     <tbody>
+                        {{#each nhacungcaps}}
                         <tr>
-                            <td>John</td>
-                            <td>Doe</td>
-                            <td>john@example.com</td>
+                            <td>{{this.TenNCC}}</td>
+                            <td>10</td>
                             <td> </td>
                             <td>
-                                <button id="btnupdate" onclick="window.location.href = '/suaSanPham'">Update</button>
-                                <button id="btndelete">Delete</button>
+                                <a href="/nhacungcap/update/{{this.id}}"><button id="btnupdate"
+                                        onclick="window.location.href = '/suaSanPham'">Update</button></a>
+                                <a href="/nhacungcap/delete/{{this.id}}"><button id="btndelete">Delete</button></a>
                                 <button id="btndetail" onclick="window.location.href = '/DetailSanPham'">Detail</button>
                             </td>
 
                         </tr>
-                        <tr>
-                            <td>Mary</td>
-                            <td>Moe</td>
-                            <td>mary@example.com</td>
-                            <td></td>
-                            <td>
-                                <button id="btnupdate" onclick="window.location.href = '/suaSanPham'">Update</button>
-                                <button id="btndelete">Delete</button>
-                                <button id="btndetail">Detail</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>July</td>
-                            <td>Dooley</td>
-                            <td>july@example.com</td>
-                            <td></td>
-                            <td>
-                                <button id="btnupdate" onclick="window.location.href = '/suaSanPham'">Update</button>
-                                <button id="btndelete">Delete</button>
-                                <button id="btndetail">Detail</button>
-                            </td>
-                        </tr>
+                        {{/each}}
+
                     </tbody>
                 </table>
             </div>
             <div class="col-sm-1"></div>
         </div>
+
+
 
     </div>
 </body>

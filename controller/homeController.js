@@ -1,3 +1,6 @@
+const taikhoan = require('../model/TaiKhoan')
+const alert = require('alert')
+
 let getHomePage = (req, res) => {
     //logic
     return res.render('main/Index', { layout: 'main/layoutmain.hbs' })
@@ -9,6 +12,21 @@ let getformDienTichTamGiac = (req, res) => {
 
 let getLogin = (req, res) => {
     return res.render('login')
+}
+
+let LoginPOST = (req, res) => {
+    console.log(req.body)
+    taikhoan.findOne({ email: req.body.email, password: req.body.password }, (err, taikhoans) => {
+        if (taikhoans) {
+            res.redirect('/')
+            console.log(taikhoans)
+        } else {
+            alert('Đăng nhập thất bại')
+            res.redirect('/login')
+
+        }
+    })
+
 }
 
 let getDienTich = (req, res) => {
@@ -39,4 +57,5 @@ module.exports = {
     getLogin,
     getUpload,
     ridirect,
+    LoginPOST,
 }

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bootstrap 5 Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+</head>
+
+<body class="body">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10">
+                <h2>Delete NCC</h2>
+
+                <form action="/nhacungcap/{{nhacungcaps.id}}?_method=DELETE" method="POST">
+
+                    <div class="mb-3">
+                        <label for="pwd">Ten NCC:</label>
+                        <input type="text" value="{{nhacungcaps.TenNCC}}" disabled="true" class="form-control" id="pwd"
+                            placeholder="Ten San Pham" name="TenSP">
+                    </div>
+
+
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                    <a href="/nhacungcap"><button type="button" class="btn btn-secondary">Back to
+                            list</button></a>
+                </form>
+
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+
+    </div>
+</body>
+
+</html>

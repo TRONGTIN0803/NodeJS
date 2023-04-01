@@ -30,6 +30,14 @@
                         <input type="text" value="{{sanphams.TenSP}}" class="form-control" id="pwd"
                             placeholder="Ten San Pham" name="TenSP">
                     </div>
+                    <div class="mb-3">
+                        <label>Nhà Cung Cấp:</label>
+                        <select class="form-select form-select-lg" name="TenNCC">
+                            {{#each nhacungcaps}}
+                            <option value="{{this.TenNCC}}">{{this.TenNCC}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
                     <label>Gia San Pham:</label><br>
                     <div class="input-group mb-3">
                         <input type="text" value="{{sanphams.Gia}}" class="form-control" placeholder="Gia San Pham"
