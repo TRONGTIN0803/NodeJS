@@ -34,9 +34,9 @@ const initwebroute = (app) => {
     router.post('/dientich', homeController.getDienTich)
 
     router.get('/upload', homeController.getUpload);
-    router.post('/upload', upload.single('avatar'), (req, res) => {
+    router.post('/upload', (req, res) => {
 
-        console.log(base64_encode(req.file.path))
+        console.log(req)
         return res.send('<h1>Thanh Cong!</h1>')
     })
     router.all('/secret', homeController.ridirect)

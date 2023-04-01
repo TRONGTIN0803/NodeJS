@@ -18,9 +18,11 @@ const SanPhamController = require("../controller/SanPhamController")
 
 
 router.get('/suaSanPham/:id', SanPhamController.suaSanPham)
-router.post('/suaSanPham', SanPhamController.POSTsuaSanPham)
+router.put('/:id', upload.single('image'), SanPhamController.suaSanPhamPUT)
 router.get('/themSanPham', SanPhamController.themSanPham)
 router.post('/themSanPham', upload.single('image'), SanPhamController.themSanPhamPOST)
+router.get('/delete/:id/', SanPhamController.XoaSanPham)
+router.delete('/:id/', SanPhamController.XoaSanPhamDel)
 
 
 //[GET] /sanpham/detail
