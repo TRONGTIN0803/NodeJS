@@ -14,19 +14,17 @@ let getLogin = (req, res) => {
     return res.render('login')
 }
 
-let LoginPOST = (req, res) => {
+let LoginPOST = async (req, res) => {
     console.log(req.body)
-    taikhoan.findOne({ email: req.body.email, password: req.body.password }, (err, taikhoans) => {
-        if (taikhoans) {
-            res.redirect('/')
-            console.log(taikhoans)
-        } else {
-            alert('Đăng nhập thất bại')
-            res.redirect('/login')
+    const user = await taikhoan.findOne({ email: req.body.email, password: req.body.password }).exec();
+    if (user) {
 
-        }
-    })
+        res.redirect('/')
+    } else {
+        alert('Đăng nhập thất bại')
+        res.redirect('/login')
 
+    }
 }
 
 let getDienTich = (req, res) => {

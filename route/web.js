@@ -27,7 +27,7 @@ function base64_encode(file) {
 const initwebroute = (app) => {
 
 
-    router.get('/trangchu', homeController.getHomePage)
+
     router.get('/formtinhdientich', homeController.getformDienTichTamGiac)
 
     router.get('/login', homeController.getLogin)
