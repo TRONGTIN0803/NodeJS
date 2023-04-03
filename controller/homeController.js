@@ -15,7 +15,6 @@ let getLogin = (req, res) => {
 }
 
 let LoginPOST = async (req, res) => {
-    console.log(req.body)
     const user = await taikhoan.findOne({ email: req.body.email, password: req.body.password }).exec();
     if (user) {
 

@@ -13,22 +13,46 @@
 
 <body class="body">
     <div class="container">
+
         <div class="row">
-            <div class="col-sm-2"></div>
-            <div class="col-sm-8">
-                <div class="row">
-                    <div class="col-sm-8 ">
-                        <img width="100%" height="500px" src='data:image/jpeg;base64,{{sanphams.HinhAnh}}' />
-                    </div>
-                    <div class="col-sm-4 ">
-                        <h2>{{sanphams.TenSP}}</h2>
-                        <h5>Giá Sản Phẩm: {{sanphams.Gia}}</h5>
-                        <h5>Nhà Cung Cấp: {{sanphams.TenNCC}}</h5>
-                    </div>
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10">
+                <h2>Detail Product</h2>
+                <div class="text-center">
+                    <img width="30%" height="300px" src='data:image/jpeg;base64,{{sanphams.HinhAnh}}' />
+
                 </div>
+                <form>
+
+                    <div class="mb-3">
+                        <label for="pwd">Ten San Pham:</label>
+                        <input type="text" value="{{sanphams.TenSP}}" disabled="true" class="form-control" id="pwd"
+                            placeholder="Ten San Pham" name="TenSP">
+                    </div>
+
+                    <label for="pwd">Nhà cung cấp:</label><br>
+                    <div class="input-group mb-3">
+                        <input type="text" value="{{sanphams.TenNCC}}" disabled="true" class="form-control"
+                            placeholder="Gia San Pham" name="Gia">
+
+                    </div>
+
+                    <label for="pwd">Gia San Pham:</label><br>
+                    <div class="input-group mb-3">
+                        <input type="text" value="{{sanphams.Gia}}" disabled="true" class="form-control"
+                            placeholder="Gia San Pham" name="Gia">
+
+                    </div>
+
+
+                    <a href="/sanpham"><button type="button" class="btn btn-secondary">Back to
+                            list</button></a>
+                </form>
+
             </div>
-            <div class="col-sm-2"></div>
+            <div class="col-sm-1"></div>
         </div>
+
     </div>
 </body>
 
