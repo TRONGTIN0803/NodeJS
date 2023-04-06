@@ -1,3 +1,4 @@
+const Product = require('../model/Product')
 const taikhoan = require('../model/TaiKhoan')
 const alert = require('alert')
 
@@ -47,6 +48,8 @@ let ridirect = (req, res) => {
 }
 
 
+
+
 module.exports = {
     getHomePage,
     getformDienTichTamGiac,
@@ -55,4 +58,5 @@ module.exports = {
     getUpload,
     ridirect,
     LoginPOST,
+
 }

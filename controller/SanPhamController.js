@@ -2,7 +2,7 @@ const product = require('../model/Product')
 const ncc = require('../model/NhaCungCap')
 const mongoose = require('mongoose');
 var fs = require('fs');
-
+const cloudinary = require('cloudinary').v2;
 
 function base64_encode(file) {
     // read binary data
@@ -10,6 +10,12 @@ function base64_encode(file) {
     // convert binary data to base64 encoded string
     return new Buffer(bitmap).toString('base64');
 }
+// Config cloud
+cloudinary.config({
+    cloud_name: "tinlaptrinh",
+    api_key: "834638854337368",
+    api_secret: "Yf_os7WWb2y0-ng5EiCDfClzOHw"
+});
 
 let getDSSanPham = (req, res) => {
     product.find({}, (err, sanphams) => {
@@ -25,9 +31,11 @@ let getDSSanPham = (req, res) => {
 
 let DetailSanPham = (req, res, next) => {
 
-    product.findById(req.params.id, (err, sanphams) => {
+    product.findById(req.params.id, async function (err, sanphams) {
+        const nhacc = await ncc.findById(sanphams.IdNCC).exec()
         if (!err) {
-            res.render('main/SanPham/DetailSanPham', { layout: 'main/layoutmain.hbs', sanphams })
+
+            res.render('main/SanPham/DetailSanPham', { layout: 'main/layoutmain.hbs', sanphams, nhacc })
         }
         else {
             res.status(400).json({ error: 'Not Found' })
@@ -37,18 +45,11 @@ let DetailSanPham = (req, res, next) => {
 
 let suaSanPham = (req, res) => {
 
-    // return res.render('main/SanPham/suaSanPham', { layout: 'main/layoutmain.hbs' })
-    product.findById(req.params.id, (err, sanphams) => {
-        if (!err) {
-            ncc.find({}, (err, nhacungcaps) => {
-                if (!err) {
-                    res.render('main/SanPham/SuaSanPham', { layout: 'main/layoutmain.hbs', sanphams, nhacungcaps })
-                }
-                else {
-                    res.status(400).json({ error: 'Not Found' })
-                }
-            })
 
+    product.findById(req.params.id, async (err, sanphams) => {
+        const nhacc = await ncc.find({}).exec()
+        if (!err) {
+            res.render('main/SanPham/SuaSanPham', { layout: 'main/layoutmain.hbs', sanphams, nhacc })
         }
         else {
             res.status(400).json({ error: 'Not Found' })
@@ -56,21 +57,26 @@ let suaSanPham = (req, res) => {
     })
 }
 
-let suaSanPhamPUT = (req, res) => {
-    //console.log(req.file)
+let suaSanPhamPUT = async (req, res) => {
     if (req.file != undefined) {
-        const strpath = req.file.path
-        const strbase64 = base64_encode(strpath)
-        product.findByIdAndUpdate(req.params.id, { HinhAnh: strbase64 }, (err, next) => {
-            if (!err) {
-                console.log("Thanh cong!!")
-            }
-            else {
-                res.status(400).json({ error: 'Not Found' })
-            }
-        })
+        const linkimg = cloudinary.uploader.upload(req.file.path)
+        linkimg.then((data) => {
+            product.findByIdAndUpdate(req.params.id, { HinhAnh: data.secure_url }, (err, next) => {
+                if (!err) {
+                    console.log("Thanh cong!!")
+                }
+                else {
+                    res.status(400).json({ error: 'Not Found' })
+                }
+            })
+        }).catch((err) => {
+            console.log(err);
+        });
+
+
     }
-    product.updateOne({ _id: req.params.id }, req.body, (err, next) => {
+
+    await product.updateOne({ _id: req.params.id }, req.body, (err, next) => {
         if (!err) {
             res.redirect('/sanpham')
         }
@@ -96,24 +102,33 @@ let themSanPham = (req, res) => {
 }
 
 let themSanPhamPOST = (req, res) => {
-    const strbase64 = base64_encode(req.file.path)
-    const sanpham = new product({ TenSP: req.body.nameproduct, HinhAnh: strbase64, Gia: req.body.price, TenNCC: req.body.TenNCC })
-    sanpham.save()
-    product.find({}, function (err, sanphams) {
-        if (!err) {
-            res.redirect('/sanpham')
-        }
-        else {
-            res.status(400).json({ error: 'Not Found' })
-        }
-    })
+    const linkimg = cloudinary.uploader.upload(req.file.path)
+    linkimg.then((data) => {
+        const sanpham = new product({ TenSP: req.body.nameproduct, HinhAnh: data.secure_url, Gia: req.body.price, IdNCC: req.body.IdNCC, Soluong: req.body.soluong, Mota: req.body.Mota })
+        sanpham.save()
+        product.find({}, function (err, sanphams) {
+            if (!err) {
+                res.redirect('/sanpham')
+            }
+            else {
+                res.status(400).json({ error: 'Not Found' })
+            }
+        })
+
+    }).catch((err) => {
+        console.log(err);
+    });
+
+
+
 
 }
 
 let XoaSanPham = (req, res) => {
-    product.findById(req.params.id, (err, sanphams) => {
+    product.findById(req.params.id, async (err, sanphams) => {
+        const nhacc = await ncc.findById(sanphams.IdNCC).exec()
         if (!err) {
-            res.render('main/SanPham/XoaSanPham', { layout: 'main/layoutmain.hbs', sanphams })
+            res.render('main/SanPham/XoaSanPham', { layout: 'main/layoutmain.hbs', sanphams, nhacc })
         }
         else {
             res.status(400).json({ error: 'Not Found' })
@@ -133,6 +148,8 @@ let XoaSanPhamDel = (req, res) => {
 }
 
 
+
+
 module.exports = {
     getDSSanPham,
     suaSanPham,
@@ -142,4 +159,5 @@ module.exports = {
     suaSanPhamPUT,
     XoaSanPham,
     XoaSanPhamDel,
+
 }

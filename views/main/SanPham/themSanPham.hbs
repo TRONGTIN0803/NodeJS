@@ -32,15 +32,25 @@
                     </div>
                     <div class="mb-3">
                         <label>Nhà Cung Cấp:</label>
-                        <select class="form-select form-select-lg" name="TenNCC">
+                        <select class="form-select form-select-lg" name="IdNCC">
                             {{#each nhacungcaps}}
-                            <option value="{{this.TenNCC}}">{{this.TenNCC}}</option>
+                            <option value="{{this._id}}">{{this.TenNCC}}</option>
                             {{/each}}
                         </select>
                     </div>
                     <div class=" mb-3">
                         <label>Gia San Pham:</label>
                         <input type="text" class="form-control" placeholder="Gia San Pham" name="price">
+
+                    </div>
+                    <div class=" mb-3">
+                        <label>So Luong:</label>
+                        <input type="text" class="form-control" placeholder="Gia San Pham" name="soluong">
+
+                    </div>
+                    <div class=" mb-3">
+                        <label>Mô tả:</label>
+                        <textarea class="form-control" placeholder="Mô tả sản phẩm" name="Mota" rows="5"></textarea>
 
                     </div>
 

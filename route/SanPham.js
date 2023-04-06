@@ -25,6 +25,8 @@ router.get('/delete/:id/', SanPhamController.XoaSanPham)
 router.delete('/:id/', SanPhamController.XoaSanPhamDel)
 
 
+
+
 //[GET] /sanpham/detail
 router.get('/:id', SanPhamController.DetailSanPham)
 router.get('/', SanPhamController.getDSSanPham)

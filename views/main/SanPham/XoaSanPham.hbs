@@ -17,7 +17,7 @@
             <div class="col-sm-10">
                 <h2>Delete Product</h2>
                 <div class="text-center">
-                    <img width="30%" height="300px" src='data:image/jpeg;base64,{{sanphams.HinhAnh}}' />
+                    <img width="30%" height="300px" src='{{sanphams.HinhAnh}}' />
 
                 </div>
                 <form action="/sanpham/{{sanphams.id}}?_method=DELETE" method="POST">
@@ -29,7 +29,7 @@
                     </div>
                     <label for="pwd">Nhà cung cấp:</label><br>
                     <div class="input-group mb-3">
-                        <input type="text" value="{{sanphams.TenNCC}}" disabled="true" class="form-control"
+                        <input type="text" value="{{nhacc.TenNCC}}" disabled="true" class="form-control"
                             placeholder="Gia San Pham" name="Gia">
 
                     </div>
@@ -38,6 +38,19 @@
                     <div class="input-group mb-3">
                         <input type="text" value="{{sanphams.Gia}}" disabled="true" class="form-control"
                             placeholder="Gia San Pham" name="Gia">
+
+                    </div>
+                    <label for="pwd">So luong San Pham:</label><br>
+                    <div class="input-group mb-3">
+                        <input type="text" value="{{sanphams.Soluong}}" disabled="true" class="form-control"
+                            placeholder="Gia San Pham" name="Gia">
+
+                    </div>
+
+                    <label for="pwd">Mo ta San Pham:</label><br>
+                    <div class="input-group mb-3">
+                        <textarea rows="5" disabled="true" class="form-control" placeholder="Gia San Pham"
+                            name="Gia">{{sanphams.Mota}}</textarea>
 
                     </div>
 

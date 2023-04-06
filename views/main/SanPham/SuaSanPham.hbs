@@ -17,7 +17,7 @@
             <div class="col-sm-10">
                 <h2>Update Product</h2>
                 <div class="text-center">
-                    <img width="30%" height="300px" src='data:image/jpeg;base64,{{sanphams.HinhAnh}}' />
+                    <img width="30%" height="300px" src='{{sanphams.HinhAnh}}' />
 
                 </div>
                 <form action="/sanpham/{{sanphams.id}}?_method=PUT" method="POST" enctype="multipart/form-data">
@@ -32,16 +32,28 @@
                     </div>
                     <div class="mb-3">
                         <label>Nhà Cung Cấp:</label>
-                        <select class="form-select form-select-lg" name="TenNCC">
-                            {{#each nhacungcaps}}
-                            <option value="{{this.TenNCC}}">{{this.TenNCC}}</option>
+                        <select class="form-select form-select-lg" name="IdNCC">
+                            {{#each nhacc}}
+                            <option value="{{this._id}}">{{this.TenNCC}}</option>
                             {{/each}}
                         </select>
                     </div>
-                    <label>Gia San Pham:</label><br>
+                    <label>Giá sản phẩm:</label><br>
                     <div class="input-group mb-3">
                         <input type="text" value="{{sanphams.Gia}}" class="form-control" placeholder="Gia San Pham"
                             name="Gia">
+
+                    </div>
+                    <label>Số lượng sản phẩm:</label><br>
+                    <div class="input-group mb-3">
+                        <input type="text" value="{{sanphams.Soluong}}" class="form-control"
+                            placeholder="So luong San Pham" name="Soluong">
+
+                    </div>
+                    <label>Mô tả Sản phẩm:</label><br>
+                    <div class="input-group mb-3">
+                        <textarea rows="5" class="form-control" placeholder="So luong San Pham"
+                            name="Mota">{{sanphams.Mota}}</textarea>
 
                     </div>
 

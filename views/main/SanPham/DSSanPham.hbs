@@ -17,22 +17,17 @@
             {{#each sanphams}}
             <div class="col-sm-3">
                 <div class="card" style="width: 18rem;">
-                    {{!-- <a href="/sanpham/{{this.id}}"><img src="{{this.HinhAnh}}" class="card-img-top"
-                            alt="Card image" /></a> --}}
+                    <a href="/sanpham/{{this.id}}"><img src="{{this.HinhAnh}}" width="100%" height="300px"
+                            class="card-img-top" alt="Card image" /></a>
 
-                    <a href="/sanpham/{{this.id}}"><img width="100%" height="300px"
-                            src='data:image/jpeg;base64,{{this.HinhAnh}}' /></a>
+                    {{!-- <a href="/sanpham/{{this.id}}"><img width="100%" height="300px"
+                            src='data:image/jpeg;base64,{{this.HinhAnh}}' /></a> --}}
                     <div class="card-body">
                         <a href="/sanpham/{{this.id}}" style="text-decoration: none;">
                             <h5 style="color: red;" class="card-title">{{this.TenSP}}</h5>
                         </a>
                         <p class="card-text">đ{{this.Gia}}</p>
-                        <div class="row">
-                            <a href="/sanpham/suaSanPham/{{this.id}}" style="margin-left: 10px;"
-                                class="btn btn-info col-sm-5 p-2">Update</a>
-                            <a class="col-sm-1" />
-                            <a href="/sanpham/delete/{{this.id}}" class="btn btn-danger col-sm-5 p-2">Delete</a>
-                        </div>
+
 
                     </div>
                 </div>
