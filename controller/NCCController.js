@@ -1,5 +1,7 @@
 const ncc = require('../model/NhaCungCap')
+const product = require('../model/Product')
 const mongoose = require('mongoose');
+const alert = require('alert')
 
 let getDSNCC = (req, res) => {
     ncc.find({}, (err, nhacungcaps) => {
@@ -76,14 +78,33 @@ let xoaNCC = (req, res) => {
     })
 }
 
-let xoaNCCDel = (req, res) => {
-    ncc.deleteOne({ _id: req.params.id }, (err, nhacungcaps) => {
-        if (!err) {
-            res.redirect('/nhacungcap')
-        } else {
-            res.status(400).json({ error: 'Not Found' })
-        }
-    })
+let xoaNCCDel = async (req, res) => {
+    const spne = await product.find({ IdNCC: req.params.id }).exec()
+    console.log(spne.length)
+    if (spne.length > 0) {
+
+        alert('Hiện không thể xóa trường này!')
+    }
+    else {
+        // res.status(400).json({ error: 'Not Found' })
+        ncc.deleteOne({ _id: req.params.id }, (err, nhacungcaps) => {
+            if (!err) {
+                res.redirect('/nhacungcap')
+            } else {
+                res.status(400).json({ error: 'Not Found' })
+            }
+        })
+    }
+
+
+    // if (checksp) {
+    //     alert('Hiện không thể xóa trường này!')
+    // } else {
+
+    // }
+
+
+
 }
 
 

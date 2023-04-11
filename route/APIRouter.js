@@ -9,4 +9,6 @@ router.get('/GetProduct/:id', APIController.GetProduct)
 
 router.post('/Login', APIController.Login)
 
+router.post('/Register', APIController.Register)
+
 module.exports = router 

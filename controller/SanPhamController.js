@@ -147,6 +147,17 @@ let XoaSanPhamDel = (req, res) => {
     })
 }
 
+let SearchSanPham = (req, res) => {
+    console.log(req.body)
+    // product.find({ TenSP: /${req.body}i/ }, (err, sanphams) => {
+    //     if (!err) {
+    //         res.json(sanphams)
+    //     } else {
+    //         res.json({ status: '404' })
+    //     }
+    // })
+}
+
 
 
 
@@ -159,5 +170,6 @@ module.exports = {
     suaSanPhamPUT,
     XoaSanPham,
     XoaSanPhamDel,
+    SearchSanPham
 
 }

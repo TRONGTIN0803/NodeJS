@@ -1,6 +1,7 @@
 const product = require('../model/Product')
 const ncc = require('../model/NhaCungCap')
 const taikhoan = require('../model/TaiKhoan')
+const account = require('../model/AcountUser')
 
 let GetDSProduct = (req, res) => {
     product.find({}, (err, sanphams) => {
@@ -14,12 +15,19 @@ let GetDSProduct = (req, res) => {
 }
 
 let GetProduct = async (req, res) => {
-    //console.log(req.params.id)
+
     product.findOne({ _id: req.params.id }, function (err, sanphams) {
+
 
         if (!err) {
 
-            res.json({ status: 1, data: sanphams })
+            ncc.findOne({ _id: sanphams.IdNCC }, function (errr, nccs) {
+                if (!errr) {
+
+                    res.json({ status: 1, data: sanphams, NhaCC: nccs })
+                }
+
+            })
         }
         else {
             res.json({ status: 0, notification: "Not Found" })
@@ -29,7 +37,19 @@ let GetProduct = async (req, res) => {
 
 
 let Login = async (req, res) => {
-    const user = await taikhoan.findOne({ email: req.body.email, password: req.body.password }).exec();
+    const user = await account.findOne({ email: req.body.email, password: req.body.password }).exec();
+    if (user) {
+
+        res.json({ status: 1, notification: "Dang nhap thanh cong" })
+    } else {
+        res.json({ status: 0, notification: "Dang nhap khong thanh cong" })
+
+    }
+}
+
+let Register = async (req, res) => {
+    const user = await new account({ email: req.body.email, password: req.body.password })
+    user.save()
     if (user) {
 
         res.json({ status: 1, notification: "Dang nhap thanh cong" })
@@ -40,4 +60,4 @@ let Login = async (req, res) => {
 }
 
 
-module.exports = { GetDSProduct, Login, GetProduct }
+module.exports = { GetDSProduct, Login, GetProduct, Register }
