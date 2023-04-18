@@ -37,15 +37,15 @@ const initwebroute = (app) => {
 
 
 
-    router.get('/formtinhdientich', homeController.getformDienTichTamGiac)
+    app.get('/formtinhdientich', homeController.getformDienTichTamGiac)
 
-    router.get('/login', homeController.getLogin)
-    router.post('/login', homeController.LoginPOST)
+    app.get('/login', homeController.getLogin)
+    app.post('/login', homeController.LoginPOST)
 
-    router.post('/dientich', homeController.getDienTich)
+    app.post('/dientich', homeController.getDienTich)
 
-    router.get('/upload', homeController.getUpload);
-    router.post('/upload', upload.single('avatar'), (req, res) => {
+    app.get('/upload', homeController.getUpload);
+    app.post('/upload', upload.single('avatar'), (req, res) => {
 
         // Upload
         console.log(req.file)
@@ -70,13 +70,14 @@ const initwebroute = (app) => {
         console.log(url);
         // https://res.cloudinary.com/<cloud_name>/image/upload/h_150,w_100/olympic_flag
     })
-    router.all('/secret', homeController.ridirect)
+    app.all('/secret', homeController.ridirect)
 
-    router.use('/sanpham', SanPhamRouter)
-    router.use('/nhacungcap', NCCRouter)
-    router.use('/api', APIRouter)
-    router.use('/', homeController.getHomePage)
-    return app.use('/', router)
+    app.use('/sanpham', SanPhamRouter)
+    app.use('/nhacungcap', NCCRouter)
+    app.use('/api', APIRouter)
+    app.use('/', homeController.getHomePage)
+
+
 }
 
 

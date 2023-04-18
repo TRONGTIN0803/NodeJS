@@ -5,6 +5,10 @@ const APIController = require("../controller/APIController")
 
 router.get('/GetDSProduct', APIController.GetDSProduct)
 
+router.get('/GetDSNCC', APIController.GetDSNCC)
+
+router.get('/GetProduct/:id', APIController.GetProduct)
+
 router.get('/GetProduct/:id', APIController.GetProduct)
 
 router.post('/Login', APIController.Login)

@@ -13,10 +13,41 @@ let GetDSProduct = (req, res) => {
         }
     })
 }
+let GetDSNCC = (req, res) => {
+    ncc.find({}, (err, nccs) => {
+        if (!err) {
+
+            res.json({ trangthai: 1, data: nccs })
+        } else {
+            res.json({ trangthai: 0, notification: 'goi api that bai' })
+        }
+    })
+}
 
 let GetProduct = async (req, res) => {
 
     product.findOne({ _id: req.params.id }, function (err, sanphams) {
+
+
+        if (!err) {
+
+            ncc.findOne({ _id: sanphams.IdNCC }, function (errr, nccs) {
+                if (!errr) {
+
+                    res.json({ status: 1, data: sanphams, NhaCC: nccs })
+                }
+
+            })
+        }
+        else {
+            res.json({ status: 0, notification: "Not Found" })
+        }
+    })
+}
+
+let GetDSProductNCC = async (req, res) => {
+
+    product.find({ IdNCC: req.params.id }, function (err, sanphams) {
 
 
         if (!err) {
@@ -60,4 +91,4 @@ let Register = async (req, res) => {
 }
 
 
-module.exports = { GetDSProduct, Login, GetProduct, Register }
+module.exports = { GetDSProduct, Login, GetProduct, Register, GetDSNCC, GetDSProductNCC }
